@@ -1,5 +1,18 @@
 interface StructuredDataProps {
-  siteData: any;
+  siteData: {
+    name: string;
+    description: string;
+    address: string;
+    phone: string;
+    email: string;
+    openingHours: string[];
+    menuItems: Array<{
+      name: string;
+      description: string;
+      price: string;
+      category: string;
+    }>;
+  };
 }
 
 export default function StructuredData({ siteData }: StructuredDataProps) {

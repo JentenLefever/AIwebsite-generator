@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 interface CookiePreferences {
   functional: boolean;
@@ -108,13 +109,13 @@ export default function CMPBanner() {
             </p>
             <p className="text-sm text-gray-600">
               U kunt uw voorkeuren hieronder aanpassen. Meer informatie vindt u in onze{' '}
-              <a href="/privacy-policy" className="text-red-600 hover:text-red-700 underline">
+              <Link href="/privacy-policy" className="text-red-600 hover:text-red-700 underline">
                 privacyverklaring
-              </a>{' '}
+              </Link>{' '}
               en{' '}
-              <a href="/cookie-policy" className="text-red-600 hover:text-red-700 underline">
+              <Link href="/cookie-policy" className="text-red-600 hover:text-red-700 underline">
                 cookiebeleid
-              </a>.
+              </Link>.
             </p>
           </div>
 
