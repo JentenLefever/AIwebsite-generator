@@ -89,7 +89,7 @@ export default function StructuredData({ siteData }: StructuredDataProps) {
           "@type": "MenuSection",
           "name": "Burgers",
           "description": "Onze populairste hamburgers",
-          "hasMenuItem": siteData.menu.map((item: any) => ({
+          "hasMenuItem": siteData.menuItems.map((item) => ({
             "@type": "MenuItem",
             "name": item.name,
             "description": item.description

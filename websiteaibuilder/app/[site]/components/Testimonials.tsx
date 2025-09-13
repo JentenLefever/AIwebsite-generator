@@ -194,7 +194,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
                     {/* Review Content */}
                     <div className="mb-4">
                       <p className="text-gray-700 leading-relaxed mb-4">
-                        "{review.quote}"
+                        &ldquo;{review.quote}&rdquo;
                       </p>
                     </div>
 

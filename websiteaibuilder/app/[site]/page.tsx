@@ -19,8 +19,20 @@ interface PageProps {
   };
 }
 
+interface SiteConfig {
+  name: string;
+  slug: string;
+  meta: {
+    title: string;
+    description: string;
+    keywords: string;
+  };
+  // Add other properties as needed
+  [key: string]: any;
+}
+
 // Site configuration data - in a real app this would come from a database
-const siteConfigs: Record<string, any> = {
+const siteConfigs: Record<string, SiteConfig> = {
   'bolle-burger': {
     name: 'De Bolle Burger',
     slug: 'bolle-burger',
