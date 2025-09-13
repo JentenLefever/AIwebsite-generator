@@ -46,7 +46,7 @@ const reviews: Testimonial[] = [
     date: "3 weken geleden"
   },
   {
-    quote: "Geweldige foodtruck! De burgers zijn vers en smaakvol. Perfect voor onze verjaardag met 30 personen. We kozen voor de 'Betaal per burger' formule en dat was ideaal voor onze gemengde groep. Sommigen aten 1 burger, anderen 3, en iedereen was tevreden. De service was vriendelijk en professioneel. De locatie was perfect en de setup was snel klaar.",
+    quote: "Geweldige foodtruck! De burgers zijn vers en smaakvol. Perfect voor onze verjaardag met 30 personen. We kozen voor de &apos;Betaal per burger&apos; formule en dat was ideaal voor onze gemengde groep. Sommigen aten 1 burger, anderen 3, en iedereen was tevreden. De service was vriendelijk en professioneel. De locatie was perfect en de setup was snel klaar.",
     author: "Lisa K.",
     role: "Privéfeest - 30 personen",
     image: "",

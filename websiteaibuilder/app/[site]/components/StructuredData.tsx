@@ -1,7 +1,9 @@
 interface StructuredDataProps {
   siteData: {
     name: string;
-    description: string;
+    meta: {
+      description: string;
+    };
     address: string;
     phone: string;
     email: string;
@@ -12,6 +14,16 @@ interface StructuredDataProps {
       price: string;
       category: string;
     }>;
+    faq?: Array<{
+      question: string;
+      answer: string;
+    }>;
+    contact?: {
+      social?: {
+        instagram?: string;
+        facebook?: string;
+      };
+    };
   };
 }
 
@@ -40,9 +52,9 @@ export default function StructuredData({ siteData }: StructuredDataProps) {
     "logo": `https://bolle-burger.websiteaibuilder.com/logo.png`,
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": siteData.contact.phone,
+      "telephone": siteData.phone,
       "contactType": "customer service",
-      "email": siteData.contact.email
+      "email": siteData.email
     },
     "address": {
       "@type": "PostalAddress",
@@ -52,9 +64,9 @@ export default function StructuredData({ siteData }: StructuredDataProps) {
       "addressCountry": "BE"
     },
     "sameAs": [
-      siteData.contact.social.instagram,
-      siteData.contact.social.facebook
-    ]
+      siteData.contact?.social?.instagram,
+      siteData.contact?.social?.facebook
+    ].filter(Boolean)
   };
 
   const localBusinessSchema = {
@@ -63,8 +75,8 @@ export default function StructuredData({ siteData }: StructuredDataProps) {
     "name": siteData.name,
     "description": siteData.meta.description,
     "url": `https://bolle-burger.websiteaibuilder.com`,
-    "telephone": siteData.contact.phone,
-    "email": siteData.contact.email,
+    "telephone": siteData.phone,
+    "email": siteData.email,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Stationsstraat 12",

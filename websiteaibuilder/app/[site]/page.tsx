@@ -26,7 +26,28 @@ interface SiteConfig {
     title: string;
     description: string;
     keywords: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    ogImage?: string;
   };
+  contact?: {
+    address?: string;
+    phone?: string;
+    email?: string;
+    openingHours?: string[];
+  };
+  menu?: Array<{
+    name: string;
+    description: string;
+    price: string;
+    category?: string;
+    image?: string;
+    alt?: string;
+  }>;
+  faq?: Array<{
+    question: string;
+    answer: string;
+  }>;
   // Add other properties as needed
   [key: string]: unknown;
 }
@@ -39,6 +60,7 @@ const siteConfigs: Record<string, SiteConfig> = {
     meta: {
       title: 'Foodtruck hamburgers huren | De Bolle Burger',
       description: 'De Bolle Burger serveert ambachtelijke hamburgers op uw feest of event. Boek onze foodtruck voor huwelijken, bedrijfsevents of festivals in Vlaanderen.',
+      keywords: 'foodtruck, hamburgers, catering, feest, event, huwelijk, bedrijfsevent, festival, Kortrijk, Vlaanderen',
       ogTitle: 'De Bolle Burger – Foodtruck voor elk feest',
       ogDescription: 'Ambachtelijke hamburgers, streetfood vibes, 100% sfeer.',
       ogImage: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80'
@@ -202,14 +224,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: site.meta.ogTitle,
       description: site.meta.ogDescription,
-      images: [site.meta.ogImage],
+      images: site.meta.ogImage ? [site.meta.ogImage] : [],
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: site.meta.ogTitle,
       description: site.meta.ogDescription,
-      images: [site.meta.ogImage],
+      images: site.meta.ogImage ? [site.meta.ogImage] : [],
     },
     alternates: {
       canonical: `https://bolle-burger.websiteaibuilder.com`,
@@ -228,9 +250,29 @@ export default function SitePage({ params }: PageProps) {
     );
   }
 
+  // Create structured data object
+  const structuredData = {
+    name: site.name,
+    meta: {
+      description: site.meta.description,
+    },
+    address: site.contact?.address || "Stationsstraat 12, 8500 Kortrijk",
+    phone: site.contact?.phone || "+32 123 456 789",
+    email: site.contact?.email || "info@bolleburger.be",
+    openingHours: site.contact?.openingHours || ["Mo-Su 09:00-22:00"],
+    menuItems: site.menu?.map((item: { name: string; description: string; price: string; category?: string }) => ({
+      name: item.name,
+      description: item.description,
+      price: item.price,
+      category: item.category || "Burgers"
+    })) || [],
+    faq: site.faq || [],
+    contact: site.contact
+  };
+
   return (
     <div className="min-h-screen">
-      <StructuredData siteData={site} />
+      <StructuredData siteData={structuredData} />
       <CMPBanner />
       <CookieSettings />
       <Navigation />
