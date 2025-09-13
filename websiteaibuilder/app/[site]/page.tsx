@@ -77,24 +77,28 @@ const siteConfigs: Record<string, SiteConfig> = {
       {
         name: 'Classic Bolle',
         description: 'rundsburger, cheddar, sla, tomaat, saus',
+        price: '€12',
         image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
         alt: 'Hamburger met brioche broodje en cheddar'
       },
       {
         name: 'Spicy Smash',
         description: 'smashburger met jalapeños en pittige mayo',
+        price: '€14',
         image: 'https://images.unsplash.com/photo-1571091655789-405eb7a3a3a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
         alt: 'Pittige hamburger met jalapeños'
       },
       {
         name: 'Veggie Delight',
         description: 'plantaardige burger met gegrilde groenten',
+        price: '€13',
         image: 'https://images.unsplash.com/photo-1525059696034-4967a729002e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
         alt: 'Vegetarische burger met gegrilde groenten'
       },
       {
         name: 'Cheese Overload',
         description: 'dubbel cheddar met crispy bacon',
+        price: '€15',
         image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
         alt: 'Hamburger met dubbele cheddar en bacon'
       }
