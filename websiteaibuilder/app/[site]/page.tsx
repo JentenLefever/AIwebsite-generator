@@ -19,51 +19,16 @@ import GardenTestimonials from './components/GardenTestimonials';
 import GardenAbout from './components/GardenAbout';
 import GardenContact from './components/GardenContact';
 import WhatsAppButton from './components/WhatsAppButton';
+// Types
+import type { SiteConfig } from './types';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     site: string;
-  };
+  }>;
 }
 
-interface SiteConfig {
-  name: string;
-  slug: string;
-  meta: {
-    title: string;
-    description: string;
-    keywords: string;
-    ogTitle?: string;
-    ogDescription?: string;
-    ogImage?: string;
-  };
-    contact?: {
-      address?: string;
-      phone?: string;
-      email?: string;
-      openingHours?: string[];
-      social?: {
-        instagram?: string;
-        facebook?: string;
-      };
-      whatsapp?: string;
-      mapEmbed?: string;
-    };
-  menu?: Array<{
-    name: string;
-    description: string;
-    price?: string;
-    category?: string;
-    image?: string;
-    alt?: string;
-  }>;
-  faq?: Array<{
-    question: string;
-    answer: string;
-  }>;
-  // Add other properties as needed
-  [key: string]: unknown;
-}
+// SiteConfig interface is now imported from types.ts
 
 // Site configuration data - in a real app this would come from a database
 const siteConfigs: Record<string, SiteConfig> = {
@@ -370,7 +335,8 @@ const siteConfigs: Record<string, SiteConfig> = {
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const site = siteConfigs[params.site];
+  const { site: siteSlug } = await params;
+  const site = siteConfigs[siteSlug];
   
   if (!site) {
     return {
@@ -400,8 +366,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default function SitePage({ params }: PageProps) {
-  const site = siteConfigs[params.site];
+export default async function SitePage({ params }: PageProps) {
+  const { site: siteSlug } = await params;
+  const site = siteConfigs[siteSlug];
   
   if (!site) {
     return (
@@ -432,7 +399,7 @@ export default function SitePage({ params }: PageProps) {
   };
 
   // Check if this is the garden site
-  const isGardenSite = params.site === 'garden-care';
+  const isGardenSite = siteSlug === 'garden-care';
 
   return (
     <div className="min-h-screen">
@@ -443,24 +410,24 @@ export default function SitePage({ params }: PageProps) {
       {isGardenSite ? (
         <>
           <GardenNavigation />
-          <GardenHero data={site.hero as any} />
-          <GardenAbout data={site.about as any} />
-          <GardenServices data={site.services as any} />
-          <GardenProjects data={site.projects as any} />
-          <GardenTestimonials data={site.testimonials as any} />
-          <GardenContact data={site.contact as any} />
+          <GardenHero data={site.hero} />
+          <GardenAbout data={site.about} />
+          <GardenServices data={site.services || []} />
+          <GardenProjects data={site.projects || []} />
+          <GardenTestimonials data={site.testimonials} />
+          <GardenContact data={site.contact} />
           <WhatsAppButton phone={site.contact?.whatsapp || ''} />
         </>
       ) : (
         <>
           <Navigation />
-          <Hero data={site.hero as any} />
-          <AboutSection data={site.about as any} />
-          <MenuHighlights data={site.menu as any} />
+          <Hero data={site.hero} />
+          <AboutSection data={site.about} />
+          <MenuHighlights data={site.menu || []} />
           <Formulas />
-          <Testimonials data={site.testimonials as any} />
-          <Contact data={site.contact as any} />
-          <Footer data={site.contact as any} />
+          <Testimonials data={site.testimonials} />
+          <Contact data={site.contact} />
+          <Footer data={site.contact} />
         </>
       )}
     </div>

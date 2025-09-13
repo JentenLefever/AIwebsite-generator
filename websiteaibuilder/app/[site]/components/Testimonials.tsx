@@ -8,8 +8,8 @@ interface Testimonial {
   role: string;
   image: string;
   alt: string;
-  rating: number;
-  date: string;
+  rating?: number;
+  date?: string;
 }
 
 interface TestimonialsProps {
@@ -184,10 +184,14 @@ export default function Testimonials({ data }: TestimonialsProps) {
                     {/* Review Header */}
                     <div className="flex items-center mb-4">
                       <div>
-                        <div className="flex items-center">
-                          {renderStars(review.rating)}
-                        </div>
-                        <p className="text-sm text-gray-500">{review.date}</p>
+                        {review.rating && (
+                          <div className="flex items-center">
+                            {renderStars(review.rating)}
+                          </div>
+                        )}
+                        {review.date && (
+                          <p className="text-sm text-gray-500">{review.date}</p>
+                        )}
                       </div>
                     </div>
 

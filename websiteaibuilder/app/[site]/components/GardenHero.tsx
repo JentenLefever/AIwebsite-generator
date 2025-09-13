@@ -5,7 +5,7 @@ interface GardenHeroProps {
     title: string;
     subtitle: string;
     cta: string;
-    badge: string;
+    badge?: string;
     backgroundImage: string;
     backgroundAlt: string;
   };
@@ -30,9 +30,11 @@ export default function GardenHero({ data }: GardenHeroProps) {
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto">
         {/* Badge */}
-        <div className="inline-block bg-green-500 text-white px-6 py-2 rounded-full text-lg font-bold mb-8 shadow-lg">
-          {data.badge}
-        </div>
+        {data.badge && (
+          <div className="inline-block bg-green-500 text-white px-6 py-2 rounded-full text-lg font-bold mb-8 shadow-lg">
+            {data.badge}
+          </div>
+        )}
         
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight" style={{ fontFamily: 'var(--font-greet-burger), sans-serif' }}>
           {data.title}

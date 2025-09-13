@@ -5,7 +5,7 @@ interface HeroProps {
     title: string;
     subtitle: string;
     cta: string;
-    price: string;
+    price?: string;
   };
 }
 

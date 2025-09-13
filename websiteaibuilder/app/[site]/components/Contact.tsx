@@ -3,14 +3,14 @@
 import { useState } from 'react';
 
 interface ContactData {
-  address: string;
-  phone: string;
-  email: string;
-  social: {
-    instagram: string;
-    facebook: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+  social?: {
+    instagram?: string;
+    facebook?: string;
   };
-  mapEmbed: string;
+  mapEmbed?: string;
 }
 
 interface ContactProps {

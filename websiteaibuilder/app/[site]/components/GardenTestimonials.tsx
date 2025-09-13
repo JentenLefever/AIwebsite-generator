@@ -6,7 +6,7 @@ interface Testimonial {
   role: string;
   image: string;
   alt: string;
-  rating: number;
+  rating?: number;
 }
 
 interface GardenTestimonialsProps {
@@ -39,9 +39,11 @@ export default function GardenTestimonials({ data }: GardenTestimonialsProps) {
             <div key={index} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="text-center">
                 {/* Stars */}
-                <div className="flex justify-center mb-4">
-                  {renderStars(testimonial.rating)}
-                </div>
+                {testimonial.rating && (
+                  <div className="flex justify-center mb-4">
+                    {renderStars(testimonial.rating)}
+                  </div>
+                )}
                 
                 {/* Quote */}
                 <blockquote className="text-lg text-gray-700 italic mb-6 leading-relaxed">

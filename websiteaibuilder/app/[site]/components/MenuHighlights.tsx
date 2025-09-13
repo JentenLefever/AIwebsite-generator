@@ -5,9 +5,9 @@ import React, { useState } from 'react';
 interface MenuItem {
   name: string;
   description: string;
-  image: string;
-  alt: string;
-  price: string;
+  image?: string;
+  alt?: string;
+  price?: string;
 }
 
 interface MenuHighlightsProps {
