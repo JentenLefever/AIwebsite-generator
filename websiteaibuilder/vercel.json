@@ -49,5 +49,15 @@
       "source": "/garden-care",
       "destination": "/garden-care"
     }
+  ],
+  "routes": [
+    {
+      "src": "/bolle-burger/(.*)",
+      "dest": "/bolle-burger/$1"
+    },
+    {
+      "src": "/garden-care/(.*)",
+      "dest": "/garden-care/$1"
+    }
   ]
 }

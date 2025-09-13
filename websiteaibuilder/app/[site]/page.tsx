@@ -30,6 +30,14 @@ interface PageProps {
 
 // SiteConfig interface is now imported from types.ts
 
+// Generate static params for all sites
+export async function generateStaticParams() {
+  return [
+    { site: 'bolle-burger' },
+    { site: 'garden-care' }
+  ];
+}
+
 // Site configuration data - in a real app this would come from a database
 const siteConfigs: Record<string, SiteConfig> = {
   'bolle-burger': {
@@ -376,8 +384,17 @@ export default async function SitePage({ params }: PageProps) {
   
   if (!site) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <h1 className="text-2xl font-bold">Site not found</h1>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Site niet gevonden</h1>
+          <p className="text-gray-600 mb-8">De gevraagde website bestaat niet.</p>
+          <a 
+            href="/" 
+            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+          >
+            Terug naar hoofdpagina
+          </a>
+        </div>
       </div>
     );
   }
