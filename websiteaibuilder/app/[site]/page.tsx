@@ -28,7 +28,7 @@ interface SiteConfig {
     keywords: string;
   };
   // Add other properties as needed
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 // Site configuration data - in a real app this would come from a database

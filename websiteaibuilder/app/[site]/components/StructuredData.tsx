@@ -102,7 +102,7 @@ export default function StructuredData({ siteData }: StructuredDataProps) {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": siteData.faq.map((faq: any) => ({
+    "mainEntity": siteData.faq?.map((faq: { question: string; answer: string }) => ({
       "@type": "Question",
       "name": faq.question,
       "acceptedAnswer": {
