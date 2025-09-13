@@ -20,7 +20,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
           {/* Content */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'OriginalBurger, sans-serif' }}>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'var(--font-greet-burger), sans-serif' }}>
               {data.title}
             </h2>
             <h3 className="text-2xl text-red-600 font-semibold mb-6">

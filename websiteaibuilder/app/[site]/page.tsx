@@ -6,6 +6,7 @@ import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import CMPBanner from './components/CMPBanner';
+import CookieSettings from './components/CookieSettings';
 import StructuredData from './components/StructuredData';
 import Navigation from './components/Navigation';
 import AboutSection from './components/AboutSection';
@@ -219,6 +220,7 @@ export default function SitePage({ params }: PageProps) {
     <div className="min-h-screen">
       <StructuredData siteData={site} />
       <CMPBanner />
+      <CookieSettings />
       <Navigation />
       <Hero data={site.hero} />
       <AboutSection data={site.about} />

@@ -18,7 +18,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-red-600" style={{ fontFamily: 'OriginalBurger, sans-serif' }}>De Bolle Burger</h1>
+            <h1 className="text-2xl font-bold text-red-600" style={{ fontFamily: 'var(--font-greet-burger), sans-serif' }}>De Bolle Burger</h1>
           </div>
 
           {/* Desktop Menu */}
