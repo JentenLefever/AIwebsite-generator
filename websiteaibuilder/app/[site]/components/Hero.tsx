@@ -36,7 +36,7 @@ export default function Hero({ data }: HeroProps) {
             
             {/* Main Headline */}
             <div className="space-y-4">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight" style={{ fontFamily: 'var(--font-greet-burger), sans-serif' }}>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight" style={{ fontFamily: 'OriginalBurger, sans-serif' }}>
                 <span className="block text-white">PREMIUM BURGERS</span>
                 <span className="block text-red-500">FOODTRUCK</span>
                 <span className="block text-white">VOOR UW EVENT</span>

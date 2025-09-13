@@ -1,9 +1,7 @@
 import { Metadata } from 'next';
 import Hero from './components/Hero';
 import MenuHighlights from './components/MenuHighlights';
-import Events from './components/Events';
 import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import CMPBanner from './components/CMPBanner';
 import CookieSettings from './components/CookieSettings';
@@ -12,6 +10,15 @@ import Navigation from './components/Navigation';
 import AboutSection from './components/AboutSection';
 import Footer from './components/Footer';
 import Formulas from './components/Formulas';
+// Garden components
+import GardenHero from './components/GardenHero';
+import GardenNavigation from './components/GardenNavigation';
+import GardenServices from './components/GardenServices';
+import GardenProjects from './components/GardenProjects';
+import GardenTestimonials from './components/GardenTestimonials';
+import GardenAbout from './components/GardenAbout';
+import GardenContact from './components/GardenContact';
+import WhatsAppButton from './components/WhatsAppButton';
 
 interface PageProps {
   params: {
@@ -30,16 +37,22 @@ interface SiteConfig {
     ogDescription?: string;
     ogImage?: string;
   };
-  contact?: {
-    address?: string;
-    phone?: string;
-    email?: string;
-    openingHours?: string[];
-  };
+    contact?: {
+      address?: string;
+      phone?: string;
+      email?: string;
+      openingHours?: string[];
+      social?: {
+        instagram?: string;
+        facebook?: string;
+      };
+      whatsapp?: string;
+      mapEmbed?: string;
+    };
   menu?: Array<{
     name: string;
     description: string;
-    price: string;
+    price?: string;
     category?: string;
     image?: string;
     alt?: string;
@@ -205,6 +218,154 @@ const siteConfigs: Record<string, SiteConfig> = {
       },
       mapEmbed: 'https://www.google.com/maps/embed?pb=...' // Replace with actual embed URL
     }
+  },
+  'garden-care': {
+    name: 'Garden Care Pro',
+    slug: 'garden-care',
+    meta: {
+      title: 'Professioneel tuinonderhoud | Garden Care Pro',
+      description: 'Professioneel tuinonderhoud voor particulieren en bedrijven. Gras maaien, snoeien, onkruidbestrijding en meer. Vraag gratis offerte aan!',
+      keywords: 'tuinonderhoud, grasmaaien, snoeien, onkruidbestrijding, hagen knippen, tuinverzorging, Kortrijk, Waregem',
+      ogTitle: 'Garden Care Pro – Uw tuin, onze zorg',
+      ogDescription: 'Professioneel tuinonderhoud met meer dan 10 jaar ervaring. Laat uw tuin het hele jaar door stralen.',
+      ogImage: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80'
+    },
+    hero: {
+      title: 'Professioneel tuinonderhoud voor elke tuin',
+      subtitle: 'Laat uw tuin het hele jaar door stralen – zonder zorgen.',
+      cta: 'Vraag gratis offerte aan',
+      badge: 'Meer dan 10 jaar ervaring',
+      backgroundImage: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80',
+      backgroundAlt: 'Professioneel onderhouden tuin met groen gras en verzorgde planten'
+    },
+    usps: [
+      {
+        icon: '✅',
+        title: 'Betrouwbare service op maat',
+        description: 'Wij passen onze diensten aan aan uw specifieke behoeften en wensen.'
+      },
+      {
+        icon: '✅',
+        title: 'Meer dan 10 jaar ervaring',
+        description: 'Onze expertise en ervaring zorgen voor het beste resultaat.'
+      },
+      {
+        icon: '✅',
+        title: 'Transparante prijzen',
+        description: 'Geen verborgen kosten, altijd eerlijke en duidelijke prijzen.'
+      },
+      {
+        icon: '✅',
+        title: 'Altijd een verzorgde tuin',
+        description: 'Regelmatig onderhoud zorgt voor een tuin die er altijd piekfijn uitziet.'
+      }
+    ],
+    services: [
+      {
+        name: 'Gras maaien & gazononderhoud',
+        description: 'Professioneel grasmaaien, verticuteren en bemesting voor een perfect gazon',
+        icon: '🌱',
+        image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+        alt: 'Gras maaien en gazononderhoud'
+      },
+      {
+        name: 'Snoeien & boomverzorging',
+        description: 'Expert snoeiwerk voor bomen, struiken en hagen',
+        icon: '🌳',
+        image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+        alt: 'Snoeien en boomverzorging'
+      },
+      {
+        name: 'Onkruidbestrijding & bemesting',
+        description: 'Effectieve onkruidbestrijding en professionele bemesting',
+        icon: '🌿',
+        image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+        alt: 'Onkruidbestrijding en bemesting'
+      },
+      {
+        name: 'Heggen & hagen knippen',
+        description: 'Precisie knippen van heggen en hagen voor een strakke uitstraling',
+        icon: '✂️',
+        image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+        alt: 'Heggen en hagen knippen'
+      },
+      {
+        name: 'Aanplanting & seizoensonderhoud',
+        description: 'Nieuwe aanplantingen en seizoensgebonden tuinonderhoud',
+        icon: '🌺',
+        image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+        alt: 'Aanplanting en seizoensonderhoud'
+      },
+      {
+        name: 'Winteronderhoud',
+        description: 'Speciale winterbehandelingen en bescherming van uw tuin',
+        icon: '❄️',
+        image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+        alt: 'Winteronderhoud van tuinen'
+      }
+    ],
+    projects: [
+      {
+        title: 'Voor & Na transformatie',
+        beforeImage: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+        afterImage: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+        description: 'Complete tuintransformatie in Waregem'
+      },
+      {
+        title: 'Gazonrenovatie',
+        beforeImage: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+        afterImage: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+        description: 'Gazonrenovatie en onderhoud'
+      },
+      {
+        title: 'Heggenonderhoud',
+        beforeImage: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+        afterImage: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+        description: 'Professioneel heggenonderhoud'
+      }
+    ],
+    testimonials: [
+      {
+        quote: 'Onze tuin ligt er altijd piekfijn bij. Betrouwbare en vriendelijke service!',
+        author: 'Familie De Smet',
+        role: 'Waregem',
+        image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+        alt: 'Familie De Smet, tevreden klant',
+        rating: 5
+      },
+      {
+        quote: 'Professioneel werk en altijd op tijd. Onze tuin ziet er fantastisch uit!',
+        author: 'Jan Vandenberghe',
+        role: 'Kortrijk',
+        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+        alt: 'Jan Vandenberghe, tevreden klant',
+        rating: 5
+      },
+      {
+        quote: 'Zeer tevreden over de service. Onze bedrijfstuin ziet er altijd verzorgd uit.',
+        author: 'Marie Dubois',
+        role: 'Gent',
+        image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+        alt: 'Marie Dubois, tevreden klant',
+        rating: 5
+      }
+    ],
+    about: {
+      title: 'Waarom kiezen voor ons?',
+      subtitle: 'Uw tuin, onze passie',
+      description: 'Met meer dan 10 jaar ervaring in tuinonderhoud zorgen wij ervoor dat uw tuin er altijd op zijn best uitziet. Ons team van ervaren tuiniers gebruikt de beste technieken en materialen om uw groene ruimte te onderhouden.',
+      name: 'Garden Care Pro Team',
+      role: 'Professionele tuiniers',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      imageAlt: 'Garden Care Pro team aan het werk'
+    },
+    contact: {
+      address: 'Groenstraat 15, 8500 Kortrijk',
+      phone: '+32 470 98 76 54',
+      email: 'info@gardencarepro.be',
+      whatsapp: '+32 470 98 76 54',
+      mapEmbed: 'https://www.google.com/maps/embed?pb=...'
+    }
   }
 };
 
@@ -260,29 +421,48 @@ export default function SitePage({ params }: PageProps) {
     phone: site.contact?.phone || "+32 123 456 789",
     email: site.contact?.email || "info@bolleburger.be",
     openingHours: site.contact?.openingHours || ["Mo-Su 09:00-22:00"],
-    menuItems: site.menu?.map((item: { name: string; description: string; price: string; category?: string }) => ({
+    menuItems: site.menu?.map((item: { name: string; description: string; price?: string; category?: string }) => ({
       name: item.name,
       description: item.description,
-      price: item.price,
+      price: item.price || "Op aanvraag",
       category: item.category || "Burgers"
     })) || [],
     faq: site.faq || [],
     contact: site.contact
   };
 
+  // Check if this is the garden site
+  const isGardenSite = params.site === 'garden-care';
+
   return (
     <div className="min-h-screen">
       <StructuredData siteData={structuredData} />
       <CMPBanner />
       <CookieSettings />
-      <Navigation />
-      <Hero data={site.hero} />
-      <AboutSection data={site.about} />
-      <MenuHighlights data={site.menu} />
-      <Formulas />
-      <Testimonials data={site.testimonials} />
-      <Contact data={site.contact} />
-      <Footer data={site.contact} />
+      
+      {isGardenSite ? (
+        <>
+          <GardenNavigation />
+          <GardenHero data={site.hero as any} />
+          <GardenAbout data={site.about as any} />
+          <GardenServices data={site.services as any} />
+          <GardenProjects data={site.projects as any} />
+          <GardenTestimonials data={site.testimonials as any} />
+          <GardenContact data={site.contact as any} />
+          <WhatsAppButton phone={site.contact?.whatsapp || ''} />
+        </>
+      ) : (
+        <>
+          <Navigation />
+          <Hero data={site.hero as any} />
+          <AboutSection data={site.about as any} />
+          <MenuHighlights data={site.menu as any} />
+          <Formulas />
+          <Testimonials data={site.testimonials as any} />
+          <Contact data={site.contact as any} />
+          <Footer data={site.contact as any} />
+        </>
+      )}
     </div>
   );
 }
