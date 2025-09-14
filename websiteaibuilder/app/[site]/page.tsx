@@ -1,25 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Hero from './components/Hero';
-import MenuHighlights from './components/MenuHighlights';
-import Testimonials from './components/Testimonials';
-import Contact from './components/Contact';
-import CMPBanner from './components/CMPBanner';
-import CookieSettings from './components/CookieSettings';
 import StructuredData from './components/StructuredData';
-import Navigation from './components/Navigation';
-import AboutSection from './components/AboutSection';
-import Footer from './components/Footer';
-import Formulas from './components/Formulas';
-// Garden components
-import GardenHero from './components/GardenHero';
-import GardenNavigation from './components/GardenNavigation';
-import GardenServices from './components/GardenServices';
-import GardenProjects from './components/GardenProjects';
-import GardenTestimonials from './components/GardenTestimonials';
-import GardenAbout from './components/GardenAbout';
-import GardenContact from './components/GardenContact';
-import WhatsAppButton from './components/WhatsAppButton';
+import SiteContent from './components/SiteContent';
 // Types
 import type { SiteConfig } from './types';
 
@@ -426,32 +408,7 @@ export default async function SitePage({ params }: PageProps) {
   return (
     <div className="min-h-screen">
       <StructuredData siteData={structuredData} />
-      <CMPBanner />
-      <CookieSettings />
-      
-      {isGardenSite ? (
-        <>
-          <GardenNavigation />
-          <GardenHero data={site.hero} />
-          <GardenAbout data={site.about} />
-          <GardenServices data={site.services || []} />
-          <GardenProjects data={site.projects || []} />
-          <GardenTestimonials data={site.testimonials} />
-          <GardenContact data={site.contact} />
-          <WhatsAppButton phone={site.contact?.whatsapp || ''} />
-        </>
-      ) : (
-        <>
-          <Navigation />
-          <Hero data={site.hero} />
-          <AboutSection data={site.about} />
-          <MenuHighlights data={site.menu || []} />
-          <Formulas />
-          <Testimonials data={site.testimonials} />
-          <Contact data={site.contact} />
-          <Footer data={site.contact} />
-        </>
-      )}
+      <SiteContent site={site} isGardenSite={isGardenSite} />
     </div>
   );
 }

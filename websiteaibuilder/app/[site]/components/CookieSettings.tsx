@@ -8,7 +8,12 @@ interface CookiePreferences {
   marketing: boolean;
 }
 
-export default function CookieSettings() {
+interface CookieSettingsProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export default function CookieSettings({ isOpen: externalIsOpen, onClose }: CookieSettingsProps = {}) {
   const [preferences, setPreferences] = useState<CookiePreferences>({
     functional: true,
     analytical: false,
@@ -36,23 +41,23 @@ export default function CookieSettings() {
     localStorage.setItem('cookie-preferences', JSON.stringify(preferences));
     localStorage.setItem('cookie-consent', 'given');
     setIsOpen(false);
+    onClose?.();
     
     // Reload page to apply changes
     window.location.reload();
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+    onClose?.();
+  };
+
+  const shouldShow = externalIsOpen !== undefined ? externalIsOpen : isOpen;
+
   return (
     <>
-      {/* Cookie Settings Button */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-gray-700 transition-colors duration-200 z-40"
-      >
-        🍪 Cookie-instellingen
-      </button>
-
       {/* Cookie Settings Modal */}
-      {isOpen && (
+      {shouldShow && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
@@ -62,7 +67,7 @@ export default function CookieSettings() {
                   Cookie-instellingen
                 </h2>
                 <button
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleClose}
                   className="text-gray-400 hover:text-gray-600"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,7 +150,7 @@ export default function CookieSettings() {
               {/* Action Buttons */}
               <div className="flex gap-3">
                 <button
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleClose}
                   className="flex-1 px-6 py-3 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium transition-colors duration-200"
                 >
                   Annuleren

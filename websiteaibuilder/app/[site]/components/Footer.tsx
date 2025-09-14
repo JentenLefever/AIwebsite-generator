@@ -8,9 +8,10 @@ interface FooterProps {
       facebook?: string;
     };
   };
+  onCookieSettingsClick?: () => void;
 }
 
-export default function Footer({ data }: FooterProps) {
+export default function Footer({ data, onCookieSettingsClick }: FooterProps) {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -32,6 +33,7 @@ export default function Footer({ data }: FooterProps) {
               <li><a href="#over-ons" className="text-gray-300 hover:text-red-500 transition-colors">Over ons</a></li>
               <li><a href="#reviews" className="text-gray-300 hover:text-red-500 transition-colors">Reviews</a></li>
               <li><a href="#contact" className="text-gray-300 hover:text-red-500 transition-colors">Contact</a></li>
+              <li><button onClick={onCookieSettingsClick} className="text-gray-300 hover:text-red-500 transition-colors text-left">Cookie-instellingen</button></li>
             </ul>
           </div>
 

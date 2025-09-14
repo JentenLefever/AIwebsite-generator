@@ -83,136 +83,192 @@ export default function CMPBanner() {
   if (!showBanner) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-end justify-center p-4">
-      <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-6">
-          {/* Header */}
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Cookie-instellingen
-            </h2>
-            <button
-              onClick={() => setShowBanner(false)}
-              className="text-gray-400 hover:text-gray-600"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Content */}
-          <div className="mb-6">
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Wij gebruiken cookies om uw ervaring op onze website te verbeteren, onze diensten te analyseren en gepersonaliseerde content te tonen. 
-              Sommige cookies zijn noodzakelijk voor de werking van de website, andere helpen ons de website te verbeteren.
-            </p>
-            <p className="text-sm text-gray-600">
-              U kunt uw voorkeuren hieronder aanpassen. Meer informatie vindt u in onze{' '}
-              <Link href="/privacy-policy" className="text-red-600 hover:text-red-700 underline">
-                privacyverklaring
-              </Link>{' '}
-              en{' '}
-              <Link href="/cookie-policy" className="text-red-600 hover:text-red-700 underline">
-                cookiebeleid
-              </Link>.
-            </p>
-          </div>
-
-          {/* Cookie Categories */}
-          <div className="space-y-4 mb-6">
-            {/* Functional Cookies */}
-            <div className="border border-gray-200 rounded-lg p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex-1">
-                  <h3 className="font-semibold text-gray-900 mb-1">Noodzakelijke cookies</h3>
-                  <p className="text-sm text-gray-600">
-                    Deze cookies zijn essentieel voor de werking van de website en kunnen niet worden uitgeschakeld.
-                  </p>
-                </div>
-                <div className="ml-4">
-                  <div className="w-12 h-6 bg-red-600 rounded-full flex items-center justify-end px-1">
-                    <div className="w-4 h-4 bg-white rounded-full"></div>
-                  </div>
-                </div>
-              </div>
+    <>
+      {/* Simple Cookie Banner */}
+      <div className="fixed inset-0 z-50 backdrop-blur-sm flex items-end justify-center p-4">
+        <div className="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 sm:mx-0">
+          <div className="p-4 sm:p-6">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-semibold text-gray-900">
+                🍪 Cookies
+              </h2>
+              <button
+                onClick={() => setShowBanner(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
             </div>
 
-            {/* Analytical Cookies */}
-            <div className="border border-gray-200 rounded-lg p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex-1">
-                  <h3 className="font-semibold text-gray-900 mb-1">Analytische cookies</h3>
-                  <p className="text-sm text-gray-600">
-                    Deze cookies helpen ons te begrijpen hoe bezoekers onze website gebruiken.
-                  </p>
-                </div>
-                <div className="ml-4">
-                  <button
-                    onClick={() => togglePreference('analytical')}
-                    className={`w-12 h-6 rounded-full flex items-center px-1 transition-colors duration-200 ${
-                      preferences.analytical ? 'bg-red-600 justify-end' : 'bg-gray-300 justify-start'
-                    }`}
-                  >
-                    <div className="w-4 h-4 bg-white rounded-full"></div>
-                  </button>
-                </div>
-              </div>
+            {/* Content */}
+            <div className="mb-4 sm:mb-6">
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Wij gebruiken cookies om uw ervaring te verbeteren. Klik op "Instellingen" voor meer opties.
+              </p>
             </div>
 
-            {/* Marketing Cookies */}
-            <div className="border border-gray-200 rounded-lg p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex-1">
-                  <h3 className="font-semibold text-gray-900 mb-1">Marketing cookies</h3>
-                  <p className="text-sm text-gray-600">
-                    Deze cookies worden gebruikt om gepersonaliseerde advertenties te tonen.
-                  </p>
-                </div>
-                <div className="ml-4">
-                  <button
-                    onClick={() => togglePreference('marketing')}
-                    className={`w-12 h-6 rounded-full flex items-center px-1 transition-colors duration-200 ${
-                      preferences.marketing ? 'bg-red-600 justify-end' : 'bg-gray-300 justify-start'
-                    }`}
-                  >
-                    <div className="w-4 h-4 bg-white rounded-full"></div>
-                  </button>
-                </div>
-              </div>
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <button
+                onClick={handleRejectAll}
+                className="flex-1 px-3 sm:px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium transition-colors duration-200"
+              >
+                Weigeren
+              </button>
+              <button
+                onClick={() => setShowSettings(true)}
+                className="flex-1 px-3 sm:px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium transition-colors duration-200"
+              >
+                Instellingen
+              </button>
+              <button
+                onClick={handleAcceptAll}
+                className="flex-1 px-3 sm:px-4 py-2 text-sm text-white bg-red-600 hover:bg-red-700 rounded-lg font-medium transition-colors duration-200"
+              >
+                Accepteren
+              </button>
             </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3">
-            <button
-              onClick={handleRejectAll}
-              className="flex-1 px-6 py-3 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium transition-colors duration-200"
-            >
-              Alleen noodzakelijke cookies
-            </button>
-            <button
-              onClick={handleSaveSettings}
-              className="flex-1 px-6 py-3 text-white bg-gray-600 hover:bg-gray-700 rounded-lg font-medium transition-colors duration-200"
-            >
-              Mijn keuzes opslaan
-            </button>
-            <button
-              onClick={handleAcceptAll}
-              className="flex-1 px-6 py-3 text-white bg-red-600 hover:bg-red-700 rounded-lg font-medium transition-colors duration-200"
-            >
-              Alles accepteren
-            </button>
-          </div>
-
-          {/* Legal Notice */}
-          <div className="mt-4 pt-4 border-t border-gray-200">
-            <p className="text-xs text-gray-500 text-center">
-              Door deze website te gebruiken, gaat u akkoord met ons gebruik van cookies in overeenstemming met de Belgische privacywetgeving.
-            </p>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Full Settings Modal */}
+      {showSettings && (
+        <div className="fixed inset-0 z-60 bg-black bg-opacity-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-gray-900">
+                  Cookie-instellingen
+                </h2>
+                <button
+                  onClick={() => setShowSettings(false)}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Content */}
+              <div className="mb-6">
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  Wij gebruiken cookies om uw ervaring op onze website te verbeteren, onze diensten te analyseren en gepersonaliseerde content te tonen. 
+                  Sommige cookies zijn noodzakelijk voor de werking van de website, andere helpen ons de website te verbeteren.
+                </p>
+                <p className="text-sm text-gray-600">
+                  U kunt uw voorkeuren hieronder aanpassen. Meer informatie vindt u in onze{' '}
+                  <Link href="/privacy-policy" className="text-red-600 hover:text-red-700 underline">
+                    privacyverklaring
+                  </Link>{' '}
+                  en{' '}
+                  <Link href="/cookie-policy" className="text-red-600 hover:text-red-700 underline">
+                    cookiebeleid
+                  </Link>.
+                </p>
+              </div>
+
+              {/* Cookie Categories */}
+              <div className="space-y-4 mb-6">
+                {/* Functional Cookies */}
+                <div className="border border-gray-200 rounded-lg p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900 mb-1">Noodzakelijke cookies</h3>
+                      <p className="text-sm text-gray-600">
+                        Deze cookies zijn essentieel voor de werking van de website en kunnen niet worden uitgeschakeld.
+                      </p>
+                    </div>
+                    <div className="ml-4">
+                      <div className="w-12 h-6 bg-red-600 rounded-full flex items-center justify-end px-1">
+                        <div className="w-4 h-4 bg-white rounded-full"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Analytical Cookies */}
+                <div className="border border-gray-200 rounded-lg p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900 mb-1">Analytische cookies</h3>
+                      <p className="text-sm text-gray-600">
+                        Deze cookies helpen ons te begrijpen hoe bezoekers onze website gebruiken.
+                      </p>
+                    </div>
+                    <div className="ml-4">
+                      <button
+                        onClick={() => togglePreference('analytical')}
+                        className={`w-12 h-6 rounded-full flex items-center px-1 transition-colors duration-200 ${
+                          preferences.analytical ? 'bg-red-600 justify-end' : 'bg-gray-300 justify-start'
+                        }`}
+                      >
+                        <div className="w-4 h-4 bg-white rounded-full"></div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Marketing Cookies */}
+                <div className="border border-gray-200 rounded-lg p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900 mb-1">Marketing cookies</h3>
+                      <p className="text-sm text-gray-600">
+                        Deze cookies worden gebruikt om gepersonaliseerde advertenties te tonen.
+                      </p>
+                    </div>
+                    <div className="ml-4">
+                      <button
+                        onClick={() => togglePreference('marketing')}
+                        className={`w-12 h-6 rounded-full flex items-center px-1 transition-colors duration-200 ${
+                          preferences.marketing ? 'bg-red-600 justify-end' : 'bg-gray-300 justify-start'
+                        }`}
+                      >
+                        <div className="w-4 h-4 bg-white rounded-full"></div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={handleRejectAll}
+                  className="flex-1 px-6 py-3 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium transition-colors duration-200"
+                >
+                  Alleen noodzakelijke cookies
+                </button>
+                <button
+                  onClick={handleSaveSettings}
+                  className="flex-1 px-6 py-3 text-white bg-gray-600 hover:bg-gray-700 rounded-lg font-medium transition-colors duration-200"
+                >
+                  Mijn keuzes opslaan
+                </button>
+                <button
+                  onClick={handleAcceptAll}
+                  className="flex-1 px-6 py-3 text-white bg-red-600 hover:bg-red-700 rounded-lg font-medium transition-colors duration-200"
+                >
+                  Alles accepteren
+                </button>
+              </div>
+
+              {/* Legal Notice */}
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <p className="text-xs text-gray-500 text-center">
+                  Door deze website te gebruiken, gaat u akkoord met ons gebruik van cookies in overeenstemming met de Belgische privacywetgeving.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
