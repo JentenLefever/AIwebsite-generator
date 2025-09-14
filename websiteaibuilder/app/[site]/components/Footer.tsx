@@ -17,7 +17,7 @@ export default function Footer({ data }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold text-red-500 mb-4 font-original-burger">De Bolle Burger</h3>
+            <h3 className="text-2xl font-bold text-red-500 mb-4 font-sink">De Bolle Burger</h3>
             <p className="text-gray-300 mb-4">
               Ambachtelijke hamburgers voor elk feest en event. Van huwelijken tot bedrijfsevents, wij maken het perfect!
             </p>

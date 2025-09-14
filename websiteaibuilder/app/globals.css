@@ -11,6 +11,16 @@
   text-rendering: optimizeLegibility;
 }
 
+@font-face {
+  font-family: 'Sink';
+  src: url('/media/Bolle Burger/Sink.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -87,6 +97,15 @@ select:focus {
 /* Custom font utilities */
 .font-original-burger {
   font-family: 'OriginalBurger', 'Arial Black', 'Helvetica Neue', Arial, sans-serif !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-sink {
+  font-family: 'Sink', 'Arial Black', 'Helvetica Neue', Arial, sans-serif !important;
   font-weight: normal !important;
   font-style: normal !important;
   text-rendering: optimizeLegibility;

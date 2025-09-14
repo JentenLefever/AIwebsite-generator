@@ -69,7 +69,7 @@ export default function Contact({ data }: ContactProps) {
     <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'var(--font-greet-burger), sans-serif' }}>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-sink">
             Laten we contact opnemen!
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
