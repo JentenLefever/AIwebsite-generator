@@ -67,6 +67,17 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/',
+        destination: '/bolle-burger',
+        permanent: false,
+        has: [
+          {
+            type: 'host',
+            value: 'bolleburger.lefeverconcept.be',
+          },
+        ],
+      },
     ];
   },
 };
