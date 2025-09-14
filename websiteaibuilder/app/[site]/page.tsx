@@ -343,6 +343,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: site.meta.title,
     description: site.meta.description,
+    icons: {
+      icon: '/favicon.ico',
+      shortcut: '/favicon.ico',
+      apple: '/favicon.ico',
+    },
     openGraph: {
       title: site.meta.ogTitle,
       description: site.meta.ogDescription,

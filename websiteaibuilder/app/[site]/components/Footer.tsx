@@ -18,7 +18,14 @@ export default function Footer({ data, onCookieSettingsClick }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold text-red-500 mb-4 font-sink">De Bolle Burger</h3>
+            <div className="flex items-center space-x-2 mb-4">
+              <img 
+                src="/media/Bolle Burger/Icon.png" 
+                alt="De Bolle Burger" 
+                className="w-12 h-12"
+              />
+              <h3 className="text-2xl font-bold text-red-500 font-sink">De Bolle Burger</h3>
+            </div>
             <p className="text-gray-300 mb-4">
               Ambachtelijke hamburgers voor elk feest en event. Van huwelijken tot bedrijfsevents, wij maken het perfect!
             </p>
