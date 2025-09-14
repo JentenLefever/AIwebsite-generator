@@ -21,7 +21,7 @@ import GardenAbout from './GardenAbout';
 import GardenContact from './GardenContact';
 import WhatsAppButton from './WhatsAppButton';
 // Types
-import type { SiteConfig } from './types';
+import type { SiteConfig } from '../types';
 
 interface SiteContentProps {
   site: SiteConfig;
