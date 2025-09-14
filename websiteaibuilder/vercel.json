@@ -8,6 +8,18 @@
       "maxDuration": 10
     }
   },
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/bolle-burger",
+      "has": [
+        {
+          "type": "host",
+          "value": "bolleburger.lefeverconcept.be"
+        }
+      ]
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
