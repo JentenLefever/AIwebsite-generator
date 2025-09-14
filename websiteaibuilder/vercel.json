@@ -10,14 +10,9 @@
   },
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/bolle-burger",
-      "has": [
-        {
-          "type": "host",
-          "value": "bolleburger.lefeverconcept.be"
-        }
-      ]
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "bolleburger.lefeverconcept.be" }],
+      "destination": "/bolle-burger/:path*"
     }
   ],
   "headers": [
